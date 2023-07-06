@@ -7,6 +7,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended-requiring-type-checking',
     'plugin:react-hooks/recommended',
   ],
+  ignorePatterns: ['.eslintrc.cjs'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 'latest',
@@ -20,7 +21,7 @@ module.exports = {
 
     // quotes
     // "prettier/prettier": ["error", { "singleQuote": true }],
-    // "quotes": ["error", "single", { "avoidEscape": true }],
+    "quotes": ["error", "double", { "avoidEscape": true }],
 
     'react-refresh/only-export-components': [
       'warn',
