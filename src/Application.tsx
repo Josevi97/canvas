@@ -1,4 +1,5 @@
-import Viewport from "./core/viewport/components/viewport/Viewport";
+import Viewport from "./modules/viewport/Viewport";
+import "./Application.scss";
 
 const Application = () => {
   return (

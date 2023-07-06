@@ -1,0 +1,23 @@
+:root {
+  --black-color: #2f2f2f;
+  --white-color : #ffffff;
+
+  --default-color: var(--black-color);
+  --primary-color: var(--black-color);
+  --secondary-color: green;
+
+  --primary-border: 2px solid var(--primary-color);
+  --secondary-border: 2px solid var(--secondary-color);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+
+  box-sizing: border-box;
+  font-size: 1em;
+
+  color: var(--primary-color);
+
+  font-size: 16px;
+}
