@@ -1,14 +1,10 @@
-type BoundaryType = {
+type StylesType = {
+  position?: string,
   top?: string,
   right?: string,
   bottom?: string,
-  left?: string,
+  left?: string
 
-  width?: string,
-  height?: string,
-}
-
-type StylesType = {
   display?: string,
   flexDirection?: "row" | "column",
   justifyContent?: string,
@@ -26,4 +22,7 @@ type StylesType = {
 
   border?: string,
   borderBottom?: string,
+
+  userSelect?: string,
+  zIndex?: number
 }

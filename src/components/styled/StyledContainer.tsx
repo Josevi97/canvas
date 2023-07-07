@@ -7,16 +7,21 @@ type StyledContainerProps = Pick<
   "backgroundColor" |
   "border" |
   "borderBottom" |
-  "flexGrow"
+  "flexGrow" |
+  "userSelect" |
+  "zIndex"
 >;
 
 const Container = styled.div<StyledContainerProps>`
-  width: ${props => props.width || "100%"};
+  position: relative;
+  width: ${props => props.width || "fit-content"};
   height: ${props => props.height || "auto"};
-  background-color: ${props => props.backgroundColor || "none"};
+  background-color: ${props => props.backgroundColor || "white"};
   border: ${props => props.border || "none"};
-  border-bottom: ${props => props.borderBottom || "none"};
+  border-bottom: ${props => props.borderBottom || "auto"};
   flex-grow: ${props => props.flexGrow || 0};
+  user-select: ${props => props.userSelect || "none"};
+  z-index: ${props => props.zIndex || 0}
 `;
 
 type ContainerProps = {
