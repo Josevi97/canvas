@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 
-export type StyledFlexProps = Pick<
+type StyledFlexProps = Pick<
   StylesType,
   "flexDirection" |
   "justifyContent" |
@@ -19,13 +19,12 @@ const Flex = styled.div<StyledFlexProps>`
 `;
 
 type FlexProps = {
-  styles?: StyledFlexProps,
   children: React.ReactNode,
-}
+} & StyledFlexProps;
 
 const StyledFlex = (props: FlexProps) => {
   return (
-    <Flex {...props.styles}>
+    <Flex {...props}>
       {
         props.children
       }

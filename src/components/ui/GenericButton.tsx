@@ -1,4 +1,4 @@
-import StyledButton, { StyledButtonProps } from "../styled/StyledButton";
+import StyledButton from "../styled/StyledButton";
 
 type GenericButtonProps = {
   children: React.ReactNode,
@@ -16,23 +16,23 @@ type GenericButtonProps = {
   "padding"
 >
 
-const GenericButton = ({ children, type, disabled, outlined, borderless, onClick, width, height, }: GenericButtonProps) => {
-  const _disabled = disabled ? "disabled-" : "";
-  const backgroundColor = `--${type}-${_disabled}color`;
-  const color = `--${outlined || type == "default" ? type : "white"}-${_disabled}color`;
+const GenericButton = (props: GenericButtonProps) => {
+  // TODO: useCallback is the way to do this
 
-  const styles: StyledButtonProps = {
-    backgroundColor: outlined || type === "default" ? "transparent" : `var(${backgroundColor})`,
-    color: `var(${color})`,
-    width: width,
-    height: height,
-    border: !outlined || borderless ? "none" : `var(--${type}-${_disabled}border)`,
-  };
+  const _disabled = props.disabled ? "disabled-" : "";
+  const backgroundColor = `--${props.type}-${_disabled}color`;
+  const color = `--${props.outlined || props.type == "default" ? props.type : "white"}-${_disabled}color`;
 
+  // TODO: I could use ts constants to make this simple
   return (
-    <StyledButton onClick={onClick} styles={styles}>
+    <StyledButton
+      {...props}
+      backgroundColor={props.outlined || props.type === "default" ? "transparent" : `var(${backgroundColor})`}
+      color={`var(${color})`}
+      border={!props.outlined || props.borderless ? "none" : `var(--${props.type}-${_disabled}border)`}
+      >
       {
-        children
+        props.children
       }
     </StyledButton>
   );

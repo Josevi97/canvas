@@ -8,18 +8,13 @@ const boundaries: BoundaryType = {
   height: "70px",
 };
 
-const headerStyles: StylesType = {
-  ...boundaries,
-  borderBottom: "1px solid #cccccc",
-};
-
 const ViewportHeader = () => {
   return (
-    <StyledContainer styles={headerStyles}>
-      <GenericButton type="default" onClick={() => console.log("works")} width={boundaries.height}>
+    <StyledContainer {...boundaries} borderBottom="1px solid #cccccc">
+      <GenericButton type="default"  width={boundaries.height}>
         <img width={22} src={cursor} />
       </GenericButton>
-      <GenericButton type="default" onClick={() => console.log("works")} width={boundaries.height}>
+      <GenericButton type="default" width={boundaries.height}>
         <img width={30} src={moveCursor} />
       </GenericButton>
     </StyledContainer>

@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 
-export type StyledPaddingProps = Pick<
+type StyledPaddingProps = Pick<
   StylesType,
   "padding"
 >
@@ -10,13 +10,12 @@ const Padding = styled.div<StyledPaddingProps>`
 `;
 
 type PaddingProps = {
-  styles?: StyledPaddingProps,
   children: React.ReactNode,
-}
+} & StyledPaddingProps;
 
 const StyledPadding = (props: PaddingProps) => {
   return (
-    <Padding{...props.styles}>
+    <Padding {...props} >
       {
         props.children
       }

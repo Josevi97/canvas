@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 
-export type StyledContainerProps = Pick<
+type StyledContainerProps = Pick<
   StylesType,
   "width" |
   "height" |
@@ -20,13 +20,12 @@ const Container = styled.div<StyledContainerProps>`
 `;
 
 type ContainerProps = {
-  styles?: StyledContainerProps,
   children: React.ReactNode,
-};
+} & StyledContainerProps;
 
 const StyledContainer = (props: ContainerProps) => {
   return (
-    <Container {...props.styles}>
+    <Container {...props}>
       {
         props.children
       }

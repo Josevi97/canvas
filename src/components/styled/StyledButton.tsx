@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 
-export type StyledButtonProps = Pick<
+type StyledButtonProps = Pick<
   StylesType,
   "width" |
   "height" |
@@ -10,10 +10,9 @@ export type StyledButtonProps = Pick<
 >
 
 type ButtonProps = {
-  styles?: StyledButtonProps
   children: React.ReactNode,
   onClick?(): void,
-}
+} & StyledButtonProps;
 
 const Button = styled.button<StyledButtonProps>`
   width: ${props => props.width || "auto"};
@@ -24,12 +23,11 @@ const Button = styled.button<StyledButtonProps>`
   cursor: pointer;
 `;
 
-const StyledButton = ({ styles, children, onClick}: ButtonProps) => {
-  console.log(styles);
+const StyledButton = (props: ButtonProps) => {
   return (
-    <Button  {...styles} onClick={onClick}>
+    <Button {...props}>
       {
-        children
+        props.children
       }
     </Button>
   );
