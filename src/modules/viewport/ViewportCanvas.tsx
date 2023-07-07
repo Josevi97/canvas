@@ -1,8 +1,12 @@
-import Container from "../../components/styled/StyledContainer";
+import Container, { StyledContainerProps } from "../../components/styled/StyledContainer";
+
+const viewportCanvasStyles: StyledContainerProps = {
+  flexGrow: 1
+};
 
 const ViewportCanvas = () => {
   return (
-    <Container>
+    <Container styles={viewportCanvasStyles}>
       Viewport canvas
     </Container>
   );

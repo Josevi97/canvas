@@ -4,14 +4,23 @@ import GenericButton from "../../components/ui/GenericButton";
 import cursor from "../../assets/icons/cursor-icon.svg";
 import moveCursor from "../../assets/icons/move-arrows-icon.svg";
 
+const boundaries: BoundaryType = {
+  height: "70px",
+};
+
+const headerStyles: StylesType = {
+  ...boundaries,
+  borderBottom: "1px solid #cccccc",
+};
+
 const ViewportHeader = () => {
   return (
-    <StyledContainer>
-      <GenericButton type="default" onClick={() => console.log("works")} width="70px">
-        <img width={22} src={cursor}></img>
+    <StyledContainer styles={headerStyles}>
+      <GenericButton type="default" onClick={() => console.log("works")} width={boundaries.height}>
+        <img width={22} src={cursor} />
       </GenericButton>
-      <GenericButton type="default" onClick={() => console.log("works")} width="70px">
-        <img width={30} src={moveCursor}></img>
+      <GenericButton type="default" onClick={() => console.log("works")} width={boundaries.height}>
+        <img width={30} src={moveCursor} />
       </GenericButton>
     </StyledContainer>
   );
