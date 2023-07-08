@@ -1,5 +1,5 @@
-import StyledContainer from "../../../components/styled/StyledContainer";
-import GenericButton from "../../../components/ui/GenericButton";
+import StyledContainer from "../../../../components/styled/StyledContainer";
+import GenericButton from "../../../../components/ui/deprecated/GenericButton";
 
 import cursor from "../../../assets/icons/cursor-icon.svg";
 import moveCursor from "../../../assets/icons/move-arrows-icon.svg";
@@ -11,7 +11,11 @@ const boundaries: BoundaryType = {
 
 const ViewportHeader = () => {
   return (
-    <StyledContainer zIndex={1} backgroundColor="white" {...boundaries} borderBottom="1px solid #cccccc">
+    <StyledContainer
+      {...boundaries}
+      zIndex={1}
+      backgroundColor="white"
+      borderBottom="1px solid #cccccc">
       <GenericButton type="default"  width={boundaries.height}>
         <img width={22} src={cursor} />
       </GenericButton>

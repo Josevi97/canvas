@@ -1,12 +1,12 @@
 import { useCamera } from "../../camera/context/Camera.context";
 import StyledPosition from "../../../components/styled/StyledPosition";
 
-type CanvasPositionedProps = {
+type ViewportPositionedProps = {
   children: React.ReactNode,
   position: Position,
 };
 
-const CanvasPositioned = (props: CanvasPositionedProps) => {
+const ViewportPositioned = (props: ViewportPositionedProps) => {
   const { state: cameraState } = useCamera();
 
   const position: Position = {
@@ -23,4 +23,4 @@ const CanvasPositioned = (props: CanvasPositionedProps) => {
   );
 };
 
-export default CanvasPositioned;
+export default ViewportPositioned;

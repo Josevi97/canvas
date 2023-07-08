@@ -1,15 +1,15 @@
 import StyledContainer from "../../../components/styled/StyledContainer";
 import StyledPadding from "../../../components/styled/StyledPadding";
-import CanvasPositioned from "./CanvasPositioned";
+import ViewportPositioned from "../../viewport/components/ViewportPositioned";
 
-type PillBoxPros = {
+type PillPros = {
   children: React.ReactNode,
   position: Position,
 };
 
-const PillBox = (props: PillBoxPros) => {
+const Pill = (props: PillPros) => {
   return (
-    <CanvasPositioned position={props.position}>
+    <ViewportPositioned position={props.position}>
     {
       <StyledContainer width="fit-content" border="1px solid red">
         <StyledPadding padding={"10px"}>
@@ -19,8 +19,8 @@ const PillBox = (props: PillBoxPros) => {
         </StyledPadding>
       </StyledContainer>
     }
-    </CanvasPositioned>
+    </ViewportPositioned>
   );
 };
 
-export default PillBox;
+export default Pill;

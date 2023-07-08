@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 
-type StyledPositionProps = Pick<
+type PositionProps = Pick<
   StylesType,
   "top" |
   "right" |
@@ -8,11 +8,7 @@ type StyledPositionProps = Pick<
   "left"
 >
 
-type PositionProps = {
-  children: React.ReactNode,
-} & StyledPositionProps;
-
-const Position = styled.div<StyledPositionProps>`
+const Position = styled.div<PositionProps>`
   position: absolute;
   top: ${props => props.top || "auto"};
   right: ${props => props.right || "auto"};
@@ -20,15 +16,10 @@ const Position = styled.div<StyledPositionProps>`
   left: ${props => props.left || "auto"};
 `;
 
+type StyledPositionProps = {
+  children?: React.ReactNode,
+} & PositionProps;
 
-const StyledPosition = (props: PositionProps) => {
-  return (
-    <Position {...props}>
-      {
-        props.children
-      }
-    </Position>
-  );
-};
+const StyledPosition = (props: StyledPositionProps) => <Position {...props} />;
 
 export default StyledPosition;

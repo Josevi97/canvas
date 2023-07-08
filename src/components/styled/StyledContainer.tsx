@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 
-type StyledContainerProps = Pick<
+type ContainerProps = Pick<
   StylesType,
   "width" |
   "height" |
@@ -12,7 +12,7 @@ type StyledContainerProps = Pick<
   "zIndex"
 >;
 
-const Container = styled.div<StyledContainerProps>`
+const Container = styled.div<ContainerProps>`
   position: relative;
   width: ${props => props.width || "fit-content"};
   height: ${props => props.height || "auto"};
@@ -24,18 +24,10 @@ const Container = styled.div<StyledContainerProps>`
   z-index: ${props => props.zIndex || 0}
 `;
 
-type ContainerProps = {
-  children: React.ReactNode,
-} & StyledContainerProps;
+type StyledContainerProps = {
+  children?: React.ReactNode,
+} & ContainerProps;
 
-const StyledContainer = (props: ContainerProps) => {
-  return (
-    <Container {...props}>
-      {
-        props.children
-      }
-    </Container>
-  );
-};
+const StyledContainer = (props: StyledContainerProps) => <Container {...props} />;
 
 export default StyledContainer;

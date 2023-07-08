@@ -1,17 +1,33 @@
-import StyledFlex from "../../../components/styled/StyledFlex";
-import ViewportCanvas from "./ViewportCanvas";
-import ViewportHeader from "./ViewportHeader";
+import StyledPosition from "../../../components/styled/StyledPosition";
+import Coordinates from "./Coordinates";
+import StyledContainer from "../../../components/styled/StyledContainer";
+import ViewportDraggable from "./ViewportDraggable";
+import { useViewport } from "../context/Viewport.context";
+import { useEffect } from "react";
 
-/** TODO: React does not recognize flexDirection.
- * https://stackoverflow.com/questions/69730364/what-is-the-purpose-of-shouldforwardprop-option-in-styled
- *
- */
 const Viewport = () => {
+  const { state: viewportState, actions: viewportActions } = useViewport();
+
+  useEffect(() => {
+    viewportActions.addPill("testing", { x: 0, y: 0 });
+    viewportActions.addPill("testing2", { x: 30, y: 100 });
+    viewportActions.addPill("testing3", { x: 20, y: 80 });
+  }, []);
+
   return (
-    <StyledFlex flexDirection="column">
-      <ViewportHeader />
-      <ViewportCanvas />
-    </StyledFlex>
+    <StyledContainer width="100%" height="100%">
+      <ViewportDraggable />
+
+      {
+        Object.keys(viewportState.elements).map((key) => {
+          return viewportState.elements[key];
+        })
+      }
+
+      <StyledPosition bottom="0" right="0">
+        <Coordinates />
+      </StyledPosition>
+    </StyledContainer>
   );
 };
 

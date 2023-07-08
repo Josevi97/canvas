@@ -1,4 +1,4 @@
-import StyledButton from "../styled/StyledButton";
+import StyledButton from "../../styled/deprecated/StyledButton";
 
 type GenericButtonProps = {
   children: React.ReactNode,

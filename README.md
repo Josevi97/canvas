@@ -12,3 +12,10 @@ than can be attached to different boxes
 6. Re style the PillBox component to make it more clean
 7. Panning should only work when a moving state is setted (context for current state)
 8. addComponent via method, in order to be able to create PillBoxes via consola (preparing the react parent communication)
+9. viewport context should store the extreme top, right, bottom, left
+10. setCameraPosition action to be able to center the camera
+
+11. zoom in / zoom out
+12. single and multiple (selecting box) selection
+
+*EXTRA: panning with right click panning

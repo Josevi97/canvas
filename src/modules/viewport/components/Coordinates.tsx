@@ -3,6 +3,7 @@ import StyledFlex from "../../../components/styled/StyledFlex";
 import StyledPadding from "../../../components/styled/StyledPadding";
 import { useCamera } from "../../camera/context/Camera.context";
 
+// IMPORTANT: This is going to be deprecated
 const Coordinates = () => {
   const { state: cameraState } = useCamera();
 
