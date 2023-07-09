@@ -10,6 +10,7 @@ type PositionProps = Pick<
 
 const Position = styled.div<PositionProps>`
   position: absolute;
+
   top: ${props => props.top || "auto"};
   right: ${props => props.right || "auto"};
   bottom: ${props => props.bottom || "auto"};

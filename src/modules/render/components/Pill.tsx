@@ -1,23 +1,28 @@
 import StyledContainer from "../../../components/styled/StyledContainer";
 import StyledPadding from "../../../components/styled/StyledPadding";
 import ViewportPositioned from "../../viewport/components/ViewportPositioned";
+import { useViewport } from "../../viewport/context/Viewport.context";
+import ViewportLimits from "../../viewport/components/ViewportLimits";
+import PillShape from "../../../components/ui/PillShape";
 
 type PillPros = {
-  children: React.ReactNode,
-  position: Position,
+  _key: string,
 };
 
 const Pill = (props: PillPros) => {
+  const { state: viewportState } = useViewport();
+  const viewportElement = viewportState.elements[props._key];
+
   return (
-    <ViewportPositioned position={props.position}>
+    <ViewportPositioned position={viewportElement.data.position}>
     {
-      <StyledContainer width="fit-content" border="1px solid red">
-        <StyledPadding padding={"10px"}>
+      <ViewportLimits _key={props._key}>
+        <PillShape>
           {
-            props.children
+            viewportElement.data.name
           }
-        </StyledPadding>
-      </StyledContainer>
+        </PillShape>
+      </ViewportLimits>
     }
     </ViewportPositioned>
   );

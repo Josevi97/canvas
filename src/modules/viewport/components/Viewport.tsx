@@ -8,10 +8,13 @@ import { useEffect } from "react";
 const Viewport = () => {
   const { state: viewportState, actions: viewportActions } = useViewport();
 
+  // TODO: this must be removed. Only used for developing
   useEffect(() => {
     viewportActions.addPill("testing", { x: 0, y: 0 });
     viewportActions.addPill("testing2", { x: 30, y: 100 });
-    viewportActions.addPill("testing3", { x: 20, y: 80 });
+    viewportActions.addPill("testing3", { x: 20, y: 50 });
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -20,7 +23,7 @@ const Viewport = () => {
 
       {
         Object.keys(viewportState.elements).map((key) => {
-          return viewportState.elements[key];
+          return viewportState.elements[key].element;
         })
       }
 

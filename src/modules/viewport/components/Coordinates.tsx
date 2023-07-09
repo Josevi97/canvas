@@ -3,19 +3,19 @@ import StyledFlex from "../../../components/styled/StyledFlex";
 import StyledPadding from "../../../components/styled/StyledPadding";
 import { useCamera } from "../../camera/context/Camera.context";
 
-// IMPORTANT: This is going to be deprecated
+// TODO: This is going to be deprecated
 const Coordinates = () => {
   const { state: cameraState } = useCamera();
 
   return (
     <StyledPadding padding="30px">
       <StyledFlex flexDirection="column" gap="10px">
-        <StyledContainer backgroundColor="none">
+        <StyledContainer>
           {
             `x: ${cameraState.position.x}`
           }
         </StyledContainer>
-        <StyledContainer backgroundColor="none">
+        <StyledContainer>
           {
             `y: ${cameraState.position.y}`
           }

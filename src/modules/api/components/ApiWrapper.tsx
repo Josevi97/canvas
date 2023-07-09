@@ -1,24 +1,40 @@
 import { useEffect } from "react";
 import { useViewport } from "../../viewport/context/Viewport.context";
+import { useCamera } from "../../camera/context/Camera.context";
+import CameraUtils from "../../camera/utils/CameraUtils";
 
 type ApiWrapperProps = {
   children?: React.ReactNode,
 }
 
 const ApiWrapper = (props: ApiWrapperProps) => {
-  const { actions } = useViewport();
+  const { state: viewportState, actions: viewportActions } = useViewport();
+  const { actions: cameraActions } = useCamera();
 
   useEffect(() => {
     window.addPill = (text: string, position: Position) => {
-      actions.addPill(text, position);
+      viewportActions.addPill(text, position);
     };
 
-    window.destroyPill = (text: string) => {
-      actions.destroyPill(text);
+    window.destroyPill = (key: string) => {
+      viewportActions.destroyElement(key);
     };
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    window.centrateCamera = () => {
+      const { top, right, bottom, left } = viewportState.limits;
+
+      const x = Math.abs(left - right) / 2;
+      const y = Math.abs(top - bottom) / 2;
+
+      cameraActions.moveTo(CameraUtils.fixPosition({ x, y }));
+    };
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [viewportState]);
 
   return (
     props.children

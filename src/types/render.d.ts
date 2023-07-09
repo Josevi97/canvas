@@ -3,6 +3,11 @@ type Position = {
   y: number,
 }
 
+type Size = {
+  width: number,
+  height: number,
+}
+
 type BoundaryType = {
   top?: string,
   right?: string,

@@ -22,6 +22,7 @@ type StylesType = {
 
   border?: string,
   borderBottom?: string,
+  borderRadius?: string,
 
   userSelect?: string,
   zIndex?: number

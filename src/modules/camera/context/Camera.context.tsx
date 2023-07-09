@@ -1,24 +1,5 @@
 import { createContext, useContext, useReducer } from "react";
-
-type CameraProps = {
-  children: React.ReactNode,
-}
-
-type CameraState = {
-  position: Position
-}
-
-type CameraActions = {
-  type: "panning"
-  payload: { position: Position }
-}
-
-type Context = {
-  state: CameraState,
-  actions: {
-    pane(position: Position): void,
-  },
-};
+import { CameraActions, CameraState, Context } from "./Camera.types";
 
 const initialState: CameraState = {
   position: {
@@ -29,7 +10,7 @@ const initialState: CameraState = {
 
 const reducer = (state: CameraState, action: CameraActions): CameraState => {
   switch (action.type) {
-    case "panning":
+    case "set_position":
       return { ...state, ...action.payload};
     default:
       throw Error("Unknown action type");
@@ -41,9 +22,16 @@ const CameraContext = createContext<Context>({
   actions: {
     pane: () => {
       throw new Error("Function not implemented.");
+    },
+    moveTo: () => {
+      throw new Error("Function not implemented.");
     }
   }
 });
+
+type CameraProps = {
+  children: React.ReactNode,
+}
 
 const CameraProvider = (props: CameraProps) => {
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -54,13 +42,18 @@ const CameraProvider = (props: CameraProps) => {
       y: state.position.y - y,
     };
 
-    dispatch({ type: "panning", payload: { position } });
+    dispatch({ type: "set_position", payload: { position } });
+  };
+
+  const moveTo = (position: Position) => {
+    dispatch({ type: "set_position", payload: { position } });
   };
 
   const context = {
     state,
     actions: {
-      pane
+      pane,
+      moveTo,
     }
   };
 
