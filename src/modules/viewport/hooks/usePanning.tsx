@@ -35,6 +35,7 @@ const usePanning = ( callback: (position: Position) => void ) => {
   }, [initialPos]);
 
   return {
+    currentPos: initialPos,
     mousedown,
     mouseup,
   };

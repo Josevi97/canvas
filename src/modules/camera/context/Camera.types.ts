@@ -1,10 +1,14 @@
 export type CameraState = {
-  position: Position
+  position: Position,
+  zoom: number,
 }
 
 export type CameraActions = {
-  type: "set_position"
+  type: "set_position",
   payload: { position: Position }
+} | {
+  type: "set_zoom",
+  payload: { value: number }
 }
 
 export type Context = {
@@ -12,5 +16,6 @@ export type Context = {
   actions: {
     pane(position: Position): void,
     moveTo(position: Position): void,
+    zoom(value: number): void,
   },
 };

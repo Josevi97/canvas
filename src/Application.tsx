@@ -9,6 +9,7 @@ const Application = () => {
   return (
     <CameraProvider>
       <ViewportProvider>
+        {/* TODO: Selection Provider must provided here to be accesible */}
         <ApiWrapper>
           <Viewport />
         </ApiWrapper>

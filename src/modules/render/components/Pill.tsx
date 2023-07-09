@@ -1,5 +1,3 @@
-import StyledContainer from "../../../components/styled/StyledContainer";
-import StyledPadding from "../../../components/styled/StyledPadding";
 import ViewportPositioned from "../../viewport/components/ViewportPositioned";
 import { useViewport } from "../../viewport/context/Viewport.context";
 import ViewportLimits from "../../viewport/components/ViewportLimits";

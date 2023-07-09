@@ -25,5 +25,7 @@ type StylesType = {
   borderRadius?: string,
 
   userSelect?: string,
-  zIndex?: number
+  zIndex?: number,
+
+  opacity?: number,
 }

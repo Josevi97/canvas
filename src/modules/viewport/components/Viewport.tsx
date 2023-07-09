@@ -8,7 +8,7 @@ import { useEffect } from "react";
 const Viewport = () => {
   const { state: viewportState, actions: viewportActions } = useViewport();
 
-  // TODO: this must be removed. Only used for developing
+  // FIXME: this must be removed. Only used for developing
   useEffect(() => {
     viewportActions.addPill("testing", { x: 0, y: 0 });
     viewportActions.addPill("testing2", { x: 30, y: 100 });
@@ -19,13 +19,13 @@ const Viewport = () => {
 
   return (
     <StyledContainer width="100%" height="100%">
-      <ViewportDraggable />
-
-      {
-        Object.keys(viewportState.elements).map((key) => {
-          return viewportState.elements[key].element;
-        })
-      }
+      <ViewportDraggable>
+        {
+          Object.keys(viewportState.elements).map((key) => {
+            return viewportState.elements[key].element;
+          })
+        }
+      </ViewportDraggable>
 
       <StyledPosition bottom="0" right="0">
         <Coordinates />
