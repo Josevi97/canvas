@@ -1,9 +1,9 @@
 import StyledPosition from "../../../components/styled/StyledPosition";
 import Coordinates from "./Coordinates";
-import StyledContainer from "../../../components/styled/StyledContainer";
 import ViewportDraggable from "./ViewportDraggable";
 import { useViewport } from "../context/Viewport.context";
 import { useEffect } from "react";
+import Grid from "../../../components/ui/Grid";
 
 const Viewport = () => {
   const { state: viewportState, actions: viewportActions } = useViewport();
@@ -18,7 +18,7 @@ const Viewport = () => {
   }, []);
 
   return (
-    <StyledContainer width="100%" height="100%">
+    <Grid>
       <ViewportDraggable>
         {
           Object.keys(viewportState.elements).map((key) => {
@@ -30,7 +30,7 @@ const Viewport = () => {
       <StyledPosition bottom="0" right="0">
         <Coordinates />
       </StyledPosition>
-    </StyledContainer>
+    </Grid>
   );
 };
 

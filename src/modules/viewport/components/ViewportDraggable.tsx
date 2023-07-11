@@ -21,13 +21,14 @@ const ViewportDraggable = (props: ViewportDraggableProps) => {
         onMouseUp={mouseup}
         {...props}>
 
-        {
-          props.children
-        }
-
-        {/* <Selection position={currentPos} mousePos={mousePos} /> */}
 
       </StyledEvents>
+
+      {
+        props.children
+      }
+
+      {/* <Selection position={currentPos} mousePos={mousePos} /> */}
     </>
   );
 };

@@ -13,7 +13,12 @@ type StylesType = {
   flexGrow?: number,
 
   color?: string,
+
   backgroundColor?: string,
+  backgroundImage?: string,
+  backgroundPosition?: string,
+  backgroundSize?: string,
+  backgroundRepeat?: string,
 
   width?: string,
   height?: string,
