@@ -12,6 +12,10 @@ than can be attached to different boxes
 - viewport context should store the extreme top, right, bottom, left
 - addComponent via method, in order to be able to create PillBoxes via consola
   (preparing the react parent communication)
+- should wrap StyledComponents in order to make them more reusable
+  ex: StyledPosition -> Positioned: args => (top left right bottom): nums || enum
+- panning with right click panning
+- implement storyboook
 
 ## TEST
 - setCameraPosition action to be able to center the camera - [test]
