@@ -1,7 +1,5 @@
-import { useState } from "react";
 import StyledEvents from "../../../components/styled/StyledEvents";
 import { useCamera } from "../../camera/context/Camera.context";
-import Selection from "../../selection/components/Selection";
 import usePanning from "../hooks/usePanning";
 
 type ViewportDraggableProps = {
@@ -12,7 +10,9 @@ const ViewportDraggable = (props: ViewportDraggableProps) => {
   const { actions: cameraActions } = useCamera();
   // const [mousePos, setMousePos] = useState<Position>();
 
-  const { mousedown, mouseup } = usePanning((position) => cameraActions.pane(position));
+  const { mousedown, mouseup } = usePanning({
+    onCenterClick: (position) => cameraActions.pane(position),
+  });
 
   return (
     <>

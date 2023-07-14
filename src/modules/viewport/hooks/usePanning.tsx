@@ -1,17 +1,48 @@
 import { useEffect, useState } from "react";
 
-const usePanning = ( callback: (position: Position) => void ) => {
-  const [initialPos, setInitialPos] = useState<Position | null>();
+type PanningProps = {
+  onLeftClick?(position: Position): void;
+  onCenterClick?(position: Position): void;
+  onRightClick?(position: Position): void;
+}
 
-  const mousemove = (event: MouseEvent) => {
-    if (!initialPos) return;
+type ButtonType = "LEFT" | "CENTER" | "RIGHT";
 
-    const position = {
-      x: initialPos.x - event.screenX,
-      y: initialPos.y - event.screenY,
+const buttonTypeMapped: ButtonType[] = ["LEFT", "CENTER", "RIGHT"];
+
+const usePanning = ({ onLeftClick, onCenterClick, onRightClick }: PanningProps) => {
+  const [data, setData] = useState<{
+    position: Position,
+    buttonType: ButtonType
+  } | null>();
+
+  const callback = (): ((position: Position) => void) => {
+    const aux = () => {
+      return;
     };
 
-    callback(position);
+    if (!data) return aux;
+
+    switch (data.buttonType) {
+      case "LEFT":
+        return onLeftClick || aux;
+      case "CENTER":
+        return onCenterClick || aux;
+      case "RIGHT":
+        return onRightClick || aux;
+    }
+  };
+
+  const mousemove = (event: MouseEvent) => {
+    if (!data) return;
+
+    const position = {
+      x: data.position.x - event.screenX,
+      y: data.position.y - event.screenY,
+    };
+
+    const clb = callback();
+    clb(position);
   };
 
   const mousedown = (event: React.MouseEvent) => {
@@ -20,11 +51,14 @@ const usePanning = ( callback: (position: Position) => void ) => {
       y: event.screenY,
     };
 
-    setInitialPos(position);
+    setData({
+      position,
+      buttonType: buttonTypeMapped[event.button],
+    });
   };
 
   const mouseup = () => {
-    setInitialPos(null);
+    setData(null);
   };
 
   useEffect(() => {
@@ -32,10 +66,10 @@ const usePanning = ( callback: (position: Position) => void ) => {
 
     return () => window.removeEventListener("mousemove", mousemove);
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [initialPos]);
+  }, [data]);
 
   return {
-    currentPos: initialPos,
+    currentPos: data?.position,
     mousedown,
     mouseup,
   };

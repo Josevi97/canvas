@@ -17,13 +17,10 @@ than can be attached to different boxes
 - setCameraPosition action to be able to center the camera - [test]
 
 ## TODO
-- should wrap StyledComponents in order to make them more reusable
-  ex: StyledPosition -> Positioned: args => (top left right bottom): nums || enum
 - panning should only work when a moving state is setted (context for current state)
 - zoom in / zoom out
 - selection module => context, component, utils...
 - single and multiple (selecting box) selection
-- panning with right click panning
 
 # Current application state
-The application progress is about the 30%
+The application progress is about the 32%
