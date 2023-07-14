@@ -16,7 +16,7 @@ const usePanning = ({ onLeftClick, onCenterClick, onRightClick }: PanningProps) 
     buttonType: ButtonType
   } | null>();
 
-  const callback = (): ((position: Position) => void) => {
+  const buildCallback = (): ((position: Position) => void) => {
     const aux = () => {
       return;
     };
@@ -41,8 +41,8 @@ const usePanning = ({ onLeftClick, onCenterClick, onRightClick }: PanningProps) 
       y: data.position.y - event.screenY,
     };
 
-    const clb = callback();
-    clb(position);
+    const callback = buildCallback();
+    callback(position);
   };
 
   const mousedown = (event: React.MouseEvent) => {
