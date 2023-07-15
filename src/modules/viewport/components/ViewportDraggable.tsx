@@ -11,7 +11,7 @@ const ViewportDraggable = (props: ViewportDraggableProps) => {
   // const [mousePos, setMousePos] = useState<Position>();
 
   const { mousedown, mouseup } = usePanning({
-    onCenterClick: (position) => cameraActions.pane(position),
+    onLeftClick: (position) => cameraActions.pane(position),
   });
 
   return (

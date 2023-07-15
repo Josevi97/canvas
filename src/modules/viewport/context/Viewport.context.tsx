@@ -92,7 +92,7 @@ const ViewportProvider = (props: ViewportProviderProps) => {
         name: text,
         position: position,
       },
-      element: <Pill key={key} _key={key} />,
+      element: <Pill key={key} id={key} />,
     };
 
     dispatch({ type: "add_element", payload: { key, element } });

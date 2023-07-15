@@ -3,7 +3,7 @@ import { useViewport } from "../context/Viewport.context";
 
 type ViewportLimits = {
   children?: React.ReactNode,
-  _key: string,
+  id: string,
 }
 
 const ViewportLimits = (props: ViewportLimits) => {
@@ -14,7 +14,7 @@ const ViewportLimits = (props: ViewportLimits) => {
     if (!ref.current) return;
 
     const { width, height } = ref.current.getBoundingClientRect();
-    viewportActions.updateLimits(props._key, { width, height });
+    viewportActions.updateLimits(props.id, { width, height });
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ref]);
