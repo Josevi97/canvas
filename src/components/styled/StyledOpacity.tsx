@@ -6,7 +6,7 @@ type StyledOpacityProps = Pick<
 >
 
 const Opacity = styled.div<StyledOpacityProps>`
-  opacity: ${props => props.opacity || 1}
+  opacity: ${props => props.opacity || 1};
 
   width: 100%;
   height: 100%;

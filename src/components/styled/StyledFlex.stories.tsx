@@ -1,19 +1,12 @@
 import { Meta, StoryObj } from "@storybook/react";
 import StyledFlex from "./StyledFlex";
 
-type Story = StoryObj<typeof StyledFlex>;
-
 const meta: Meta<typeof StyledFlex> = {
   component: StyledFlex,
-};
-
-export default meta;
-
-const Default: Story = {
   argTypes: {
     flexDirection: {
       defaultValue: "row",
-      type: "string"
+      options: ["row", "column"],
     },
     gap: {
       defaultValue: "0px",
@@ -21,11 +14,11 @@ const Default: Story = {
     },
     justifyContent: {
       defaultValue: "center",
-      type: "string"
+      options: ["center", "space-between", "space-evenly", "space-end", "space-start"],
     },
     alignItems: {
       defaultValue: "center",
-      type: "string"
+      options: ["center", "start", "end"],
     },
   },
   args: {
@@ -36,8 +29,7 @@ const Default: Story = {
   },
   render: (props) => {
     return (
-      // To simulate the center
-      <div style={{height: "100vh"}}>
+      <div style={{ height: "100vh" }}>
         <StyledFlex {...props}>
           <div>First</div>
           <div>Second</div>
@@ -48,16 +40,9 @@ const Default: Story = {
   }
 };
 
-export const Primary: Story = {
-  ...Default,
-  name: "row",
+export const Primary: StoryObj<typeof StyledFlex> = {
+  ...meta,
+  name: "Playground",
 };
 
-export const Row: Story = {
-  ...Default,
-  name: "column",
-  args: {
-    ...Default.args,
-    flexDirection: "column"
-  },
-};
+export default meta;

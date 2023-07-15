@@ -3,7 +3,7 @@ import Coordinates from "./Coordinates";
 import ViewportDraggable from "./ViewportDraggable";
 import { useViewport } from "../context/Viewport.context";
 import { useEffect } from "react";
-import Grid from "../../../components/ui/Grid";
+import Grid from "../../../components/Grid";
 
 const Viewport = () => {
   const { state: viewportState, actions: viewportActions } = useViewport();

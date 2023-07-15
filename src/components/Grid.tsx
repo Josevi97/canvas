@@ -1,5 +1,5 @@
-import { useCamera } from "../../modules/camera/context/Camera.context";
-import StyledBackground from "../styled/StyledBackground";
+import { useCamera } from "../modules/camera/context/Camera.context";
+import StyledBackground from "./styled/StyledBackground";
 
 type GridProps = {
   children?: React.ReactNode,
@@ -15,7 +15,7 @@ const Grid = (props: GridProps) => {
 
   return (
     <StyledBackground
-      backgroundImage={"url(\"vector-pattern.png\")"}
+      backgroundImage={"vector-pattern.png"}
       backgroundSize="400px"
       backgroundPosition={`${position.x}px ${position.y}px`}
       backgroundRepeat="repeat">

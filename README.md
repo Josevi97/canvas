@@ -18,13 +18,14 @@ than can be attached to different boxes
 - implement storyboook
 
 ## TEST
-- setCameraPosition action to be able to center the camera - [test]
+- setCameraPosition action to be able to center the camera
 
 ## TODO
 - panning should only work when a moving state is setted (context for current state)
 - zoom in / zoom out
 - selection module => context, component, utils...
 - single and multiple (selecting box) selection
+- implement husky
 
 # Current application state
 The application progress is about the 32%

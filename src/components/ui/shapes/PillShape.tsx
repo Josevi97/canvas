@@ -1,7 +1,7 @@
-import StyledContainer from "../styled/StyledContainer";
-import StyledPadding from "../styled/StyledPadding";
-import PillUtils from "../../modules/render/utils/PillUtils";
-import { RenderUtils } from "../../modules/render/utils/RenderUtils";
+import StyledContainer from "../../styled/StyledContainer";
+import StyledPadding from "../../styled/StyledPadding";
+import PillUtils from "../../../modules/render/utils/PillUtils";
+import { RenderUtils } from "../../../modules/render/utils/RenderUtils";
 
 type PillShapeProps = {
   children?: React.ReactNode,

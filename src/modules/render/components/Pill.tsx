@@ -1,7 +1,7 @@
 import ViewportPositioned from "../../viewport/components/ViewportPositioned";
 import { useViewport } from "../../viewport/context/Viewport.context";
 import ViewportLimits from "../../viewport/components/ViewportLimits";
-import PillShape from "../../../components/ui/PillShape";
+import PillShape from "../../../components/ui/shapes/PillShape";
 
 type PillPros = {
   _key: string,

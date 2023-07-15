@@ -11,7 +11,7 @@ type BackgroundProps = Pick<
 
 const Background = styled.div<BackgroundProps>`
   background-color: ${props => props.backgroundColor || "none"};
-  background-image: ${props => props.backgroundImage || "none"};
+  background-image: ${props => props.backgroundImage ? `url("${props.backgroundImage}")` : "none"};
   background-position: ${props => props.backgroundPosition || "none"};
   background-size: ${props => props.backgroundSize || "none"};
   background-repeat: ${props => props.backgroundRepeat || "none"};
