@@ -1,49 +1,21 @@
 import { useEffect, useState } from "react";
 
+type ButtonType = "LEFT" | "CENTER" | "RIGHT";
+
 type PanningProps = {
   onLeftClick?(position: Position): void;
   onCenterClick?(position: Position): void;
   onRightClick?(position: Position): void;
 }
 
-type ButtonType = "LEFT" | "CENTER" | "RIGHT";
-
 const buttonTypeMapped: ButtonType[] = ["LEFT", "CENTER", "RIGHT"];
 
-const usePanning = ({ onLeftClick, onCenterClick, onRightClick }: PanningProps) => {
-  const [data, setData] = useState<{
-    position: Position,
-    buttonType: ButtonType
-  } | null>();
-
-  const buildCallback = (): ((position: Position) => void) => {
-    const aux = () => {
-      return;
-    };
-
-    if (!data) return aux;
-
-    switch (data.buttonType) {
-      case "LEFT":
-        return onLeftClick || aux;
-      case "CENTER":
-        return onCenterClick || aux;
-      case "RIGHT":
-        return onRightClick || aux;
-    }
-  };
-
-  const mousemove = (event: MouseEvent) => {
-    if (!data) return;
-
-    const position = {
-      x: data.position.x - event.screenX,
-      y: data.position.y - event.screenY,
-    };
-
-    const callback = buildCallback();
-    callback(position);
-  };
+const usePanning = ({
+  onLeftClick = () => {},
+  onCenterClick = () => {},
+  onRightClick = () => {}
+}: PanningProps) => {
+  const [data, setData] = useState<{ position: Position, buttonType: ButtonType } | null>(null);
 
   const mousedown = (event: React.MouseEvent) => {
     const position: Position = {
@@ -57,15 +29,32 @@ const usePanning = ({ onLeftClick, onCenterClick, onRightClick }: PanningProps) 
     });
   };
 
-  const mouseup = () => {
-    setData(null);
-  };
+  const mouseup = () => setData(null);
 
   useEffect(() => {
+    if (!data) return;
+
+    const onClicks = {
+      "LEFT": onLeftClick,
+      "CENTER": onCenterClick,
+      "RIGHT": onRightClick,
+    };
+
+    const mousemove = (event: MouseEvent) => {
+      const position = {
+        x: data.position.x - event.screenX,
+        y: data.position.y - event.screenY,
+      };
+
+      const onClick = onClicks[data.buttonType];
+      onClick(position);
+    };
+
     window.addEventListener("mousemove", mousemove);
 
-    return () => window.removeEventListener("mousemove", mousemove);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    return () => {
+      window.removeEventListener("mousemove", mousemove);
+    };
   }, [data]);
 
   return {
