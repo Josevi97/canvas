@@ -21,6 +21,8 @@ type StylesType = {
   backgroundRepeat?: string,
 
   width?: string,
+  minWidth?: string,
+
   height?: string,
 
   padding?: string,

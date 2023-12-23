@@ -7,6 +7,7 @@ import { styled } from "styled-components";
 type ContainerProps = Pick<
   StylesType,
   "width" |
+  "minWidth" |
   "height" |
   "backgroundColor" |
   "border" |
@@ -20,6 +21,7 @@ type ContainerProps = Pick<
 const Container = styled.div<ContainerProps>`
   position: relative;
   width: ${props => props.width || "fit-content"};
+  min-width: ${props => props.minWidth || "auto"};
   height: ${props => props.height || "auto"};
   background-color: ${props => props.backgroundColor || "none"};
   border: ${props => props.border || "none"};

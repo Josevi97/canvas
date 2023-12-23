@@ -10,6 +10,7 @@ type PillShapeProps = {
 const PillShape = (props: PillShapeProps) => {
   return (
     <StyledContainer
+      minWidth="150px"
       backgroundColor={RenderUtils.colors.white}
       border={PillUtils.border.style}
       borderRadius={PillUtils.border.radius}>
