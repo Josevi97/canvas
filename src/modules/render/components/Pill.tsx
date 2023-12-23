@@ -1,6 +1,5 @@
 import ViewportPositioned from "../../viewport/components/ViewportPositioned";
 import { useViewport } from "../../viewport/context/Viewport.context";
-import ViewportLimits from "../../viewport/components/ViewportLimits";
 import PillShape from "../../../components/ui/shapes/PillShape";
 
 type PillPros = {
@@ -14,13 +13,11 @@ const Pill = (props: PillPros) => {
   return (
     <ViewportPositioned position={viewportElement.data.position}>
     {
-      <ViewportLimits id={props.id}>
-        <PillShape>
-          {
-            viewportElement.data.name
-          }
-        </PillShape>
-      </ViewportLimits>
+      <PillShape>
+        {
+          viewportElement.data.name
+        }
+      </PillShape>
     }
     </ViewportPositioned>
   );
