@@ -1,6 +1,6 @@
 import StyledEvents from "../../../components/styled/StyledEvents";
 import { useCamera } from "../../camera/context/Camera.context";
-import usePanning from "../hooks/usePanning";
+import usePanning from "../../camera/hooks/usePanning";
 
 type ViewportDraggableProps = {
   children?: React.ReactNode,

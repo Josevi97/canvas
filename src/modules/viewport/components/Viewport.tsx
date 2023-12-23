@@ -13,8 +13,6 @@ const Viewport = () => {
     viewportActions.addPill("testing", { x: 0, y: 0 });
     viewportActions.addPill("testing2", { x: 30, y: 100 });
     viewportActions.addPill("testing3", { x: 20, y: 50 });
-
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

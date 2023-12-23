@@ -153,7 +153,7 @@ const ViewportProvider = (props: ViewportProviderProps) => {
   );
 };
 
-export default ViewportProvider;
-
 // eslint-disable-next-line react-refresh/only-export-components
 export const useViewport = () => useContext(ViewportContext);
+
+export default ViewportProvider;

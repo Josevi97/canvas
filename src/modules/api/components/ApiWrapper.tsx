@@ -19,8 +19,6 @@ const ApiWrapper = (props: ApiWrapperProps) => {
     window.destroyPill = (key: string) => {
       viewportActions.destroyElement(key);
     };
-
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -32,8 +30,6 @@ const ApiWrapper = (props: ApiWrapperProps) => {
 
       cameraActions.moveTo(CameraUtils.fixPosition({ x, y }));
     };
-
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [viewportState]);
 
   return (
