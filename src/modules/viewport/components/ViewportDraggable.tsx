@@ -6,31 +6,14 @@ type ViewportDraggableProps = {
   children?: React.ReactNode,
 }
 
-const ViewportDraggable = (props: ViewportDraggableProps) => {
+const ViewportDraggable = (_: ViewportDraggableProps) => {
   const { actions: cameraActions } = useCamera();
-  // const [mousePos, setMousePos] = useState<Position>();
 
   const { mousedown, mouseup } = usePanning({
     onLeftClick: (position) => cameraActions.pane(position),
   });
 
-  return (
-    <>
-      <StyledEvents
-        onMouseDown={mousedown}
-        onMouseUp={mouseup}
-        {...props}>
-
-
-      </StyledEvents>
-
-      {
-        props.children
-      }
-
-      {/* <Selection position={currentPos} mousePos={mousePos} /> */}
-    </>
-  );
+  return <StyledEvents onMouseDown={mousedown} onMouseUp={mouseup} />;
 };
 
 export default ViewportDraggable;

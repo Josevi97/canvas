@@ -19,13 +19,13 @@ const Viewport = () => {
 
   return (
     <Grid>
-      <ViewportDraggable>
-        {
-          Object.keys(viewportState.elements).map((key) => {
-            return viewportState.elements[key].element;
-          })
-        }
-      </ViewportDraggable>
+      <ViewportDraggable />
+
+      {
+        Object.keys(viewportState.elements).map((key) => {
+          return viewportState.elements[key].element;
+        })
+      }
 
       <StyledPosition bottom="0" right="0">
         <Coordinates />

@@ -16,8 +16,7 @@ const ViewportLimits = (props: ViewportLimits) => {
     const { width, height } = ref.current.getBoundingClientRect();
     viewportActions.updateLimits(props.id, { width, height });
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [ref]);
+  }, [ref, props, viewportActions]);
 
   return (
     <div ref={ref}>
